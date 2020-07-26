@@ -1,0 +1,17 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<h2>Welcome to WashU's Meme Hunt Club, started by Carsen Codel (Class of '24)</h2>
+
+<p>The premise of Meme Hunt Club is simple: every Sunday night, Carsen will go somewhere on campus and hide a piece of paper with a meme on it. Just after midnight on Monday, the image will be posted on the Meme Hunt Club wwebiste and the search will begin.</p>
+
+<p>Club members will have a week to find the meme. There will be a QR code with the meme that will allow you to register that you have found the meme. Our Proprietary Equation (&trade;) will determine a score based on the time elapsed since the posting of the meme and the order in which the meme was found (i.e. first place gets the most points). You will score a minimum of 25 points per meme found.</p>
+
+<p>In addition to the image posted, a new hint will be released each day offering clues towards where the picture may be hidden. Keep in mind that the image may not always be in plain view. It may be on a wall, under a table, or obscured by an object. However, the image will always be within physical reach (Carsen is a short king, so he has to be able to put it up in the first place).</p>
+
+<p>To join WashU Meme Hunt Club, simply <a href="{% url 'login' %}">log in</a> or <a href="{% url 'signup' %}">sign up</a> using your WUSTL email account. Passwords are kept confidential&mdash;not even Carsen can see them.
+
+Leaderboards will be updated on weekly, monthly (rolling 4-week total), and yearly bases. The all-time leaders will also be posted.</p>
+
+<h2>Happy hunting!</p>
+{% endblock content %}

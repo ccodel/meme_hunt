@@ -1,0 +1,7 @@
+/* Theme elements ported over from the WashU theme found online */
+
+footer .copyright {
+  padding: 10px;
+  clear: both;
+  text-align: center;
+}

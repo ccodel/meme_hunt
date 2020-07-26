@@ -1,0 +1,82 @@
+/* Code in WashU colors */
+.wustl-red {
+  background-color: #a51417;
+  text-color: white;
+  color: white;
+}
+
+.wustl-gray {
+  background-color: #6c7373;
+  text-color: white;
+  color: white;
+}
+
+.wustl-green {
+  background-color: #007360;
+  text-color: white;
+  color: white;
+  width: inherit;
+}
+
+.wustl-link a:link {
+  color: lightgray;
+}
+
+.wustl-link a:visited {
+  color: lightgray;
+}
+
+.wustl-link a:hover {
+  color: white;
+}
+
+.wustl-link button:hover {
+  background-color: #8f1217;
+}
+
+/* Edit natural HTML tags */
+section {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Adjust Bootstrap classes */
+.navbar > a, .navbar-nav > a {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-primary {
+  color: white;
+  background-color: #a51417;
+  border-color: #a51417;
+}
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:focus {
+  color: white !important;
+  background-color: #8f1217 !important;
+  border-color: #8f1217 !important;
+}
+
+.btn-secondary {
+  color: white;
+  background-color: #6c7373;
+  border-color: #6c7373;
+}
+
+.btn-secondary:hover, .btn-secondary:active, .btn-secondary:focus {
+  color: black !important;
+  background-color: #c8c8c8;
+  border-color: #c8c8c8;
+}

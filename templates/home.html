@@ -1,0 +1,46 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<section id="intro">
+  <div class="text-center">
+    <h4>Washington University in Saint Louis presents</h4>
+    <h1>Meme Hunt Club</h1>
+  </div>
+</section>
+
+<hr>
+
+<section id="welcome">
+  <div class="text-center">
+    <h3>Welcome to the club!</h3>
+    <p>
+      WashU Meme Hunt Club is free and open to all WashU students. Anyone can join at any time.
+    </p>
+    <a class="btn btn-primary btn-lg wustl-link" href="{% url 'account_signup' %}">Sign up today</a>
+  </div>
+</section>
+
+<hr>
+
+<section id="meme">
+  <div class="text-center">
+    <h3>Ready to hunt?</h3>
+    <p>
+      A new meme is placed somewhere on campus each week. Hints are released as the week progresses.
+    </p>
+    <a class="btn btn-secondary btn-lg wustl-link" href="{% url 'about' %}">Go to this week's meme</a>
+  </div>
+</section>
+
+<hr>
+
+<section id="scoreboard">
+  <div class="text-center">
+    <h3>See how you stack up against others</h3>
+    <p>
+      Finding the meme before your classmates gives you more points. The scoreboard is updated weekly.
+    </p>
+    <a class="btn btn-primary btn-lg wustl-link" href="{% url 'about' %}">See the scoreboard</a>
+  </div>
+</section>
+{% endblock content %}
