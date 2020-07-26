@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # Local
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
+    'memes.apps.MemesConfig',
 ]
 
 MIDDLEWARE = [
