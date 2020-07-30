@@ -28,7 +28,7 @@
     <p>
       A new meme is placed somewhere on campus each week. Hints are released as the week progresses.
     </p>
-    <a class="btn btn-secondary btn-lg wustl-link" href="{% url 'about' %}">Go to this week's meme</a>
+    <a class="btn btn-success btn-lg wustl-link" href="{% url 'about' %}">Go to this week's meme</a>
   </div>
 </section>
 
@@ -41,6 +41,18 @@
       Finding the meme before your classmates gives you more points. The scoreboard is updated weekly.
     </p>
     <a class="btn btn-primary btn-lg wustl-link" href="{% url 'about' %}">See the scoreboard</a>
+  </div>
+</section>
+
+<hr>
+
+<section id="meme-list">
+  <div class="text-center">
+    <h3>See the previous memes</h3>
+    <p>
+      All previous memes are catalogued for your viewing pleasure. Perhaps they will give you ideas for where this week's meme could be?
+    </p>
+    <a class="btn btn-success btn-lg wustl-link" href="{% url 'meme_list' %}">See the meme list</a>
   </div>
 </section>
 {% endblock content %}

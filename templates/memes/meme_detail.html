@@ -1,26 +1,30 @@
 {% extends '_base.html' %}
+{% load static %}
 
 {% block content %}
-<div class="meme-detail">
-  <!--
-  <h2><a href="">Meme for the week of {{ meme.start_date }}</a></h2>
-  <p>{{ meme.subtitle }}</p>
-  <img id="meme" src="{{ url meme.image }}">
-  -->
+<section class="my-auto" id="back">
+  <div class="container">
+    <a href="{% url 'meme_list' %}">Back to memes <!-- TODO add in arrow later --></a>
+  </div>
+</section>
 
-  <h2>Meme for the week of September 15, 2020</h2>
-  <p>Around the world</p>
-  <p>Image here</p>
-</div>
+<hr>
 
-<!--
-<div>
-  {% if (1) %}
-    <p>Hint 1: {{ meme.hint1 }}</p>
-  {% endif %}
-</div>
--->
-<div>
-  <p>Hint 1: Atlas</p>
-</div>
+<section id="meme-info">
+  <div class="text-center">
+    <h2>Meme for the week of {{ meme.start_date }}</h2>
+    <p>{{ meme.subtitle }}</p>
+    <img class="w-50" id="meme" src="{{ meme.image.url }}">
+
+    <div id="hints">
+      <p>Hint 1: {{ meme.hint1 }}</p>
+      <p>Hint 2: {{ meme.hint2 }}</p>
+      <p>Hint 3: {{ meme.hint3 }}</p>
+      <p>Hint 4: {{ meme.hint4 }}</p>
+      <p>Hint 5: {{ meme.hint5 }}</p>
+      <p>Hint 6: {{ meme.hint6 }}</p>
+      <p>Hint 7: {{ meme.hint7 }}</p>
+    </div>
+  </div>
+</section>
 {% endblock content %}

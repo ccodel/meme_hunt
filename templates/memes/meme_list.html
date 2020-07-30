@@ -1,9 +1,19 @@
 {% extends '_base.html' %}
 
 {% block content %}
-  {% for meme in meme_list %}
-    <div>
-      <h2><a href="{{ meme.get_absolute_url }}">{{ meme.subtitle }}</a></h2>
+  {% if meme_list|length == 0 %}
+    <div class="text-center">
+      <h2 class="text-muted">No memes to display</h2>
     </div>
-  {% endfor %}
+    {% else %}
+    {% for meme in meme_list %}
+    <div class="container border rounded mt-2 mb-2">
+      <a class="row" href="{{ meme.get_absolute_url }}">
+        <img class="thumbnail ml-2 mr-2" id="meme" src="{{ meme.image.url }}">
+        <h2 class="my-auto">{{ meme.subtitle }}</h2>
+        <p class="my-auto ml-auto mr-2">{{ meme.start_date}} - {{ meme.end_date }}</p>
+      </a>
+    </div>
+    {% endfor %}
+  {% endif %}
 {% endblock content %}

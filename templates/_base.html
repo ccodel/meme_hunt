@@ -19,13 +19,25 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <div class="nav navbar-nav">
-            <a class="nav-item btn btn-light" href="{% url 'about' %}">About</a>
-            {% if user.is_authenticated %}
+          <div class="nav navbar-nav ml-auto">
+            {% if not 'about' in request.path %}
+              <a class="nav-item btn btn-light" href="{% url 'about' %}">About</a>
+            {% endif %}
+            {% if user.is_staff and not 'create_meme' in request.path %}
+              <a class="nav-item btn btn-light" href="{% url 'meme_creation' %}">Create a meme</a>
+            {% endif %}
+            {% if user.is_authenticated and not 'logout' in request.path %}
               <a class="nav-item btn btn-light" href="{% url 'account_logout' %}">Log Out</a>
             {% else %}
-              <a class="nav-item btn btn-light" href="{% url 'account_login' %}">Log In</a>
-              <a class="nav-item btn btn-secondary" href="{% url 'account_signup' %}">Sign Up</a>
+              {% if not 'login' in request.path %}
+                <a class="nav-item btn btn-light" href="{% url 'account_login' %}">Log In</a>
+              {% endif %}
+              {% if not 'signup' in request.path %}
+                <a class="nav-item btn btn-secondary" href="{% url 'account_signup' %}">Sign Up</a>
+              {% endif %}
+            {% endif %}
+            {% if user.is_authenticated %}
+            <p class="nav-item my-auto" style="padding-left=10px;font-size:12px;">You are logged in as <u>{{ user.email }}</u></p>
             {% endif %}
           </div>
         </div>
@@ -33,6 +45,19 @@
     </header>
 
     <br><br><br><br>
+
+    {% if messages %}
+    <div class="container">
+      {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
 
     <div class="container-fluid">
       {% block content %}
@@ -52,5 +77,7 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Local scripts -->
+    <script src="{% static 'js/main.js' %}"></script>
 	</body>
 </html>

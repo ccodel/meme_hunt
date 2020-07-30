@@ -1,0 +1,15 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div class="container">
+  <h3 class="text-center">Create a meme</h3>
+  <form class="text-center" enctype="multipart/form-data" action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}    
+
+    <div class="text-center">
+      <button class="btn btn-lg btn-success" type="submit">Create</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

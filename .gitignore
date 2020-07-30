@@ -30,6 +30,8 @@ var/
 .env
 *.log
 staticfiles/
+media/
+*.sh
 
 # Miscellany
 *.swp

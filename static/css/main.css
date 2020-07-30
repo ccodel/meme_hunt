@@ -34,12 +34,18 @@
   background-color: #8f1217;
 }
 
+.thumbnail {
+  width: auto;
+  height: 50px;
+}
+
+.no-link {
+  text-decoration: none;
+}
+
 /* Edit natural HTML tags */
 section {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin-top: 20px;
 }
 
 /* Adjust Bootstrap classes */
@@ -68,6 +74,19 @@ section {
   background-color: #8f1217 !important;
   border-color: #8f1217 !important;
 }
+
+.btn-success {
+  color: white;
+  background-color: #007360;
+  border-color: #007360;
+}
+
+.btn-success:hover, .btn-success:active, .btn-success:focus {
+  color: white !important;
+  background-color: #008670 !important;
+  border-color: #008670 !important;
+}
+
 
 .btn-secondary {
   color: white;
