@@ -1,0 +1,45 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<section id="header">
+  <div class="text-center">
+  {% if meme is None %}
+    <h2 class="text-muted">No memes to find</h2>
+  {% else %}
+    <h2>Meme hunt scoreboard</h2>
+  {% endif %}
+  </div>
+</section>
+
+<hr>
+
+<section id="scoreboard">
+  <div class="text-center">
+  {% if find_list.count == 0 %}
+    <h3 class="text-muted">No one has found the meme yet!</h2>
+  {% else %}
+  <div class="container">
+    <table class="table">
+      <tr>
+        <th scope="col">Place</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Score</th>
+      </tr>
+      {% for find in find_list %}
+      <div class="container border rounded mt-2 mb-2 w-25">
+        <tr>
+          <!-- my-auto ml-2 or ml-auto mr-2 -->
+          <td scope="row">{{ forloop.counter }}</td>
+          <td>{{ find.user.first_name }} {{ find.user.last_name }}</td>
+          <td>{{ find.user.email }}</td>
+          <td>{{ find.score }}</td>
+        </tr>
+      </div>
+      {% endfor %}
+      </table>
+    </div>
+  {% endif %}
+  </div>
+</section>
+{% endblock %}

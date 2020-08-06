@@ -7,6 +7,9 @@
   <form method="post">
     {% csrf_token %}
     {{ form|crispy }}
+    {% if request.GET.next != None %}
+      <input type=hidden id="next" name="next" value="{{ next }}">
+    {% endif %}
     <div class="text-center">
       <button class="btn btn-lg btn-success" type="submit">Log In</button>
     </div>

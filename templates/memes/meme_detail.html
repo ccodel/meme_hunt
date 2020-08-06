@@ -1,5 +1,6 @@
 {% extends '_base.html' %}
 {% load static %}
+{% load qr_tags %}
 
 {% block content %}
 <section class="my-auto" id="back">
@@ -15,6 +16,13 @@
     <h2>Meme for the week of {{ meme.start_date }}</h2>
     <p>{{ meme.subtitle }}</p>
     <img class="w-50" id="meme" src="{{ meme.image.url }}">
+
+    {% if user.is_staff %}
+      <div id="qrcode">
+        <p>QR code for admin:</p>
+        {% qr_from_text meme.get_absolute_location_url %}
+      </div>
+    {% endif %}
 
     <div id="hints">
       <p>Hint 1: {{ meme.hint1 }}</p>

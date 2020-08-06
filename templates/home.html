@@ -28,7 +28,11 @@
     <p>
       A new meme is placed somewhere on campus each week. Hints are released as the week progresses.
     </p>
-    <a class="btn btn-success btn-lg wustl-link" href="{% url 'about' %}">Go to this week's meme</a>
+    {% if meme != None %}
+      <a class="btn btn-success btn-lg wustl-link" href="{{ meme.get_absolute_url }}">Go to this week's meme</a>
+    {% else %}
+      <a class="btn btn-success btn-lg wustl-link" href="{% url 'meme_list' %}">Go to this week's meme</a>
+    {% endif %}
   </div>
 </section>
 
@@ -40,7 +44,7 @@
     <p>
       Finding the meme before your classmates gives you more points. The scoreboard is updated weekly.
     </p>
-    <a class="btn btn-primary btn-lg wustl-link" href="{% url 'about' %}">See the scoreboard</a>
+    <a class="btn btn-primary btn-lg wustl-link" href="{% url 'scoreboard' %}">See the scoreboard</a>
   </div>
 </section>
 

@@ -45,11 +45,13 @@ INSTALLED_APPS = [
     'crispy_forms',
     'allauth',
     'allauth.account',
+    'qrcode',
 
     # Local
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
     'memes.apps.MemesConfig',
+    'scoreboard.apps.ScoreboardConfig',
 ]
 
 MIDDLEWARE = [
@@ -119,7 +121,7 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
@@ -148,6 +150,7 @@ MEDIA_URL = '/media/'  # TODO change these for prod
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Classes for Bootstrap when working with Django's messages app
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
     messages.INFO: 'alert-info',
