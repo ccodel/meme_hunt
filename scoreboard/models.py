@@ -1,6 +1,5 @@
 from django.db import models
-from datetime import datetime, time
-from django.utils import timezone
+from meme_hunt.lib.time import TimeConverter
 
 class Find(models.Model):
     # Django provides default ID field
@@ -17,9 +16,7 @@ class Find(models.Model):
 
     def determine_score(self):
         # Determine base score based on time
-        midnight = timezone.make_aware(
-                timezone.datetime.combine(self.meme.start_date, time.min),
-                timezone.get_current_timezone())
+        midnight = TimeConverter.min(self.meme.start_date)
         difference = self.date_found - midnight
         hours_since = int(difference.total_seconds() // 3600)
         print('Hours since start date: ' + str(hours_since))

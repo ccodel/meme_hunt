@@ -1,38 +1,45 @@
 {% extends '_base.html' %}
 {% load static %}
 {% load qr_tags %}
+{% load meme_tags %}
 
 {% block content %}
 <section class="my-auto" id="back">
   <div class="container">
-    <a href="{% url 'meme_list' %}">Back to memes <!-- TODO add in arrow later --></a>
+    <a class="btn btn-lg btn-secondary" href="{% url 'meme_list' %}">Back to memes <!-- TODO add in arrow later --></a>
   </div>
 </section>
 
 <hr>
 
-<section id="meme-info">
+<section id="meme">
   <div class="text-center">
     <h2>Meme for the week of {{ meme.start_date }}</h2>
     <p>{{ meme.subtitle }}</p>
     <img class="w-50" id="meme" src="{{ meme.image.url }}">
 
     {% if user.is_staff %}
+      <br>
       <div id="qrcode">
-        <p>QR code for admin:</p>
+        <p>(Visible only to staff) QR code:</p>
         {% qr_from_text meme.get_absolute_location_url %}
       </div>
     {% endif %}
+  </div>
+</section>
 
-    <div id="hints">
-      <p>Hint 1: {{ meme.hint1 }}</p>
-      <p>Hint 2: {{ meme.hint2 }}</p>
-      <p>Hint 3: {{ meme.hint3 }}</p>
-      <p>Hint 4: {{ meme.hint4 }}</p>
-      <p>Hint 5: {{ meme.hint5 }}</p>
-      <p>Hint 6: {{ meme.hint6 }}</p>
-      <p>Hint 7: {{ meme.hint7 }}</p>
-    </div>
+<hr>
+
+<section id="hints">
+  <div class="text-center">
+    <h2>Hints</h2>
+    {% for hint in meme.hints %}
+      {% if meme|hint_visible:forloop.counter %}
+        <p>Hint {{ forloop.counter }}: {{ hint }}</p>
+      {% elif user.is_staff %}
+        <p>(Visible only to staff) Hint {{ forloop.counter }}: {{ hint }}</p>
+      {% endif %}
+    {% endfor %}
   </div>
 </section>
 {% endblock content %}
