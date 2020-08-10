@@ -43,6 +43,10 @@
   text-decoration: none;
 }
 
+.undisplayed {
+  display: none;
+}
+
 /* Edit natural HTML tags */
 section {
   margin-top: 20px;

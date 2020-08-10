@@ -29,6 +29,7 @@
       A new meme is placed somewhere on campus each week. Hints are released as the week progresses.
     </p>
     {% if meme != None %}
+      <p class="undisplayed" id="meme-id">{{ meme.id }}</p>
       <a class="btn btn-success btn-lg wustl-link" href="{{ meme.get_absolute_url }}">Go to this week's meme</a>
     {% else %}
       <a class="btn btn-success btn-lg wustl-link" href="{% url 'meme_list' %}">Go to this week's meme</a>
