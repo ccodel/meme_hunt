@@ -35,3 +35,7 @@ media/
 
 # Miscellany
 *.swp
+
+# Do not ignore meme_hunt/lib
+!./meme_hunt/lib/
+meme_hunt/lib/__pycache__/
