@@ -1,6 +1,9 @@
 # Ignore Mac OSX files
 *.DS_Store
 
+# Ignore database
+db.sqlite3
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
