@@ -16,5 +16,6 @@ urlpatterns = [
     # Local apps
     path('', include('pages.urls')),
     path('memes/', include('memes.urls')),
+    path('user_profile/', include('user_profile.urls')),
     path('scoreboard/', include('scoreboard.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # TODO prod

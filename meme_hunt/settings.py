@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
     'memes.apps.MemesConfig',
+    'user_profile.apps.UserProfileConfig',
     'scoreboard.apps.ScoreboardConfig',
 ]
 

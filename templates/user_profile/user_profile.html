@@ -1,0 +1,32 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<section id="profile">
+  <div class="text-center">
+    <h1>Profile information</h1>
+
+    <hr>
+
+    <form method="post">
+      {% csrf_token %}
+
+      <p>Email: {{ passed_user.email }}</p>
+
+      <input type="hidden" id="email" name="email" value="{{passed_user.email}}"/>
+
+      <label for="first_name">First name:</label>
+      <input type="text" id="first_name" name="first_name" value="{{ passed_user.first_name}}"/>
+
+      <br><br>
+
+      <label for="last_name">Last name:</label>
+      <input type="text" id="last_name" name="last_name" value="{{ passed_user.last_name }}"/>
+
+      <br><br>
+
+      <input type="submit" id="submit" name="submit" class="btn btn-secondary" value="Save profile information"/>
+    </form>
+  </div>
+</section>
+{% endblock %}

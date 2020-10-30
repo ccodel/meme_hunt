@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+
+{% block content %}
+  {% if user_list|length == 0 %}
+  <div class="text-center">
+    <h2 class="text-muted">No users to display</h2>
+    <h4 class="text-muted">Which raises the question of how you can see this...</h4>
+  {% else %}
+    <h2 class="text-center">There are {{ user_list|length }} users.</h2>
+    {% for u in user_list %}
+    <div class="container border rounded mt-2 mb-2">
+      <a class="row" href="{% url 'profile' %}?email={{ u.email }}">{{ u.email }}</a>
+    </div>
+    {% endfor %}
+  {% endif %}
+{% endblock %}

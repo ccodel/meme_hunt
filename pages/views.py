@@ -8,7 +8,11 @@ class HomePageView(TemplateView):
     template_name = 'home.html'
 
     def get(self, request):
-        meme = Meme.latest()
+        try:
+            meme = Meme.latest()
+        except DoesNotExist:
+            meme = None
+
         return render(request, self.template_name, {'meme': meme})
 
 class AboutPageView(TemplateView):

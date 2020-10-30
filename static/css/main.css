@@ -43,22 +43,32 @@
   text-decoration: none;
 }
 
+#icon {
+  width: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 /* Edit natural HTML tags */
 section {
   margin-top: 20px;
 }
 
 /* Adjust Bootstrap classes */
-.navbar > a, .navbar-nav > a {
+.navbar > a, .navbar-nav > a, .navbar > div, .navbar-nav > div {
   margin-left: 5px;
   margin-right: 5px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
+.dropdown {
+  cursor: pointer;
+}
+
 .container-fluid {
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 10px;
+  padding-right: 10px;
   margin-left: auto;
   margin-right: auto;
 }

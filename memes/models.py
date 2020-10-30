@@ -54,10 +54,10 @@ class Meme(models.Model):
         return Meme.objects.latest('start_date')
 
     def hints(self):
-        return { self.hint1,
+        return [ self.hint1,
                 self.hint2,
                 self.hint3,
                 self.hint4,
                 self.hint5,
                 self.hint6,
-                self.hint7 }
+                self.hint7 ]

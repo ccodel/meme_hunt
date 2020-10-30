@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %} Meme Hunt Club{% endblock title %}</title>
 
+    <link rel="icon" href="{% static 'img/crest.png' %}">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/washu-theme.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
@@ -14,7 +16,7 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg fixed-top navbar-dark wustl-red">
-        <a class="navbar-brand" href="{% url 'home' %}">Meme Hunt Club</a>
+        <a class="navbar-brand" href="{% url 'home' %}"><img id="icon" class="my-auto" src="{% static 'img/crest.png' %}">Meme Hunt Club</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,18 +28,28 @@
             {% if user.is_staff and not 'create_meme' in request.path %}
               <a class="nav-item btn btn-light" href="{% url 'meme_creation' %}">Create a meme</a>
             {% endif %}
-            {% if user.is_authenticated and not 'logout' in request.path %}
-              <a class="nav-item btn btn-light" href="{% url 'account_logout' %}">Log Out</a>
-            {% else %}
-              {% if not 'login' in request.path %}
-                <a class="nav-item btn btn-light" href="{% url 'account_login' %}">Log In</a>
-              {% endif %}
-              {% if not 'signup' in request.path %}
-                <a class="nav-item btn btn-secondary" href="{% url 'account_signup' %}">Sign Up</a>
-              {% endif %}
+            {% if not user.is_authenticated and not 'login' in request.path %}
+              <a class="nav-item btn btn-light" href="{% url 'account_login' %}">Log In</a>
             {% endif %}
+            {% if not user.is_authenticated and not 'signup' in request.path %}
+              <a class="nav-item btn btn-secondary" href="{% url 'account_signup' %}">Sign Up</a>
+            {% endif %}
+            <!-- {% if user.is_authenticated %} -->
+            <!-- <p class="nav-item my-auto" style="padding-left=10px;font-size:12px;">You are logged in as <u>{{ user.email }}</u></p> -->
+            <!-- {% endif %} -->
             {% if user.is_authenticated %}
-            <p class="nav-item my-auto" style="padding-left=10px;font-size:12px;">You are logged in as <u>{{ user.email }}</u></p>
+            <div class="nav-item btn btn-light dropdown">
+              <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Logged in as <u>{{ user.email }}</u>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item btn" href="{% url 'profile' %}">Profile</a>
+                {% if user.is_staff %}
+                <a class="dropdown-item btn" href="{% url 'profile_list' %}">User Profiles</a>
+                {% endif %}
+                <a class="dropdown-item btn" href="{% url 'account_logout' %}">Log Out</a>
+              </div>
+              <div>
             {% endif %}
           </div>
         </div>
@@ -67,7 +79,7 @@
     <br><br>
 
     <footer>
-      <div class="copyright wustl-red wustl-link">
+      <div class="container-fluid copyright wustl-red wustl-link">
         © 2020 WashU Meme Hunt Club | Made with Django, maintained by <a href="https://github.com/ccodel">Cayden Codel</a>
       </div>
     </footer>

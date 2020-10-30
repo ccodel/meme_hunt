@@ -27,15 +27,13 @@
         <th scope="col">Score</th>
       </tr>
       {% for find in find_list %}
-      <div class="container border rounded mt-2 mb-2 w-25">
-        <tr>
-          <!-- my-auto ml-2 or ml-auto mr-2 -->
-          <td scope="row">{{ forloop.counter }}</td>
-          <td>{{ find.user.first_name }} {{ find.user.last_name }}</td>
-          <td>{{ find.user.email }}</td>
-          <td>{{ find.score }}</td>
-        </tr>
-      </div>
+      <tr>
+        <!-- my-auto ml-2 or ml-auto mr-2 -->
+        <td scope="row">{{ forloop.counter }}</td>
+        <td>{{ find.user.first_name }} {{ find.user.last_name }}</td>
+        <td>{{ find.user.email }}</td>
+        <td>{{ find.score }}</td>
+      </tr>
       {% endfor %}
       </table>
     </div>
