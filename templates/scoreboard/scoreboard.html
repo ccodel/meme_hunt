@@ -34,6 +34,9 @@
       <div class="tab-content" id="tab-content">
 
         <div class="tab-pane fade show active" id="week" role="tabpanel" aria-labelledby="week-tab">
+          {% if week_finds|length == 0 %}
+            <h4>No one has found this week's meme yet!</h4>
+          {% else %}
           <table class="table" style="overflow-x: scroll">
             <tr>
               <th scope="col">Place</th>
@@ -52,9 +55,13 @@
             </tr>
           {% endfor %}
           </table>
+          {% endif %}
         </div>
 
         <div class="tab-pane fade" id="month" role="tabpanel" aria-labelledby="month-tab">
+          {% if month_finds|length == 0 %}
+            <h4>No one has found memes in the past four weeks!</h4>
+          {% else %}
           <table class="table">
             <tr>
               <th scope="col">Place</th>
@@ -73,9 +80,13 @@
             </tr>
           {% endfor %}
           </table>
+          {% endif %}
         </div>
 
         <div class="tab-pane fade" id="all-time" role="tabpanel" aria-labelledby="all-time-tab">
+          {% if all_finds|length == 0 %}
+            <h4>No one has found any memes yet!</h4>
+          {% else %}
           <table class="table">
             <tr>
               <th scope="col">Place</th>
@@ -94,6 +105,7 @@
             </tr>
           {% endfor %}
           </table>
+          {% endif %}
         </div>
       </div>
     </div>
