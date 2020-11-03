@@ -64,7 +64,7 @@ class MemeLocateView(TemplateView):
 
             # Finally, check whether the user has found the meme before
             meme = Meme.objects.filter(secret_key=secret_key).first()
-            possible_find = Find.objects.filter(user=request.user)
+            possible_find = Find.objects.filter(user=request.user, meme=meme)
             if possible_find.count() == 0:
                 new_find = Find(
                         meme=meme,
