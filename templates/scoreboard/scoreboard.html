@@ -3,7 +3,7 @@
 {% block content %}
 <section id="header">
   <div class="text-center">
-  {% if meme is None %}
+  {% if finds == 0 %}
     <h2 class="text-muted">No memes to find</h2>
   {% else %}
     <h2>Meme hunt scoreboard</h2>
@@ -15,29 +15,89 @@
 
 <section id="scoreboard">
   <div class="text-center">
-  {% if find_list.count == 0 %}
-    <h3 class="text-muted">No one has found the meme yet!</h2>
+  {% if finds == 0 %}
+    <h3 class="text-muted">No one has found any memes yet!</h2>
   {% else %}
-  <div class="container">
-    <table class="table">
-      <tr>
-        <th scope="col">Place</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Score</th>
-      </tr>
-      {% for find in find_list %}
-      <tr>
-        <!-- my-auto ml-2 or ml-auto mr-2 -->
-        <td scope="row">{{ forloop.counter }}</td>
-        <td>{{ find.user.first_name }} {{ find.user.last_name }}</td>
-        <td>{{ find.user.email }}</td>
-        <td>{{ find.score }}</td>
-      </tr>
-      {% endfor %}
-      </table>
+    <div class="container">
+      <ul class="nav nav-tabs" id="score_tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="week-tab" data-toggle="tab" href="#week" role="tab" aria-controls="week" aria-selected="true">This week</a>
+        </li>
+        <li>
+          <a class="nav-link" id="month-tab" data-toggle="tab" href="#month" role="tab" aria-controls="month" aria-selected="false">Month</a>
+        </li>
+        <li>
+          <a class="nav-link" id="all-time-tab" data-toggle="tab" href="#all-time" role="tab" aria-controls="all-time" aria-selected="false">All time</a>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="tab-content">
+
+        <div class="tab-pane fade show active" id="week" role="tabpanel" aria-labelledby="week-tab">
+          <table class="table" style="overflow-x: scroll">
+            <tr>
+              <th scope="col">Place</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Score</th>
+            </tr>
+
+          {% for find in week_finds %}
+            <tr>
+              <!-- my-auto ml-2 or ml-auto mr-2 -->
+              <td scope="row">{{ forloop.counter }}</td>
+              <td>{{ find.user.first_name }} {{ find.user.last_name }}</td>
+              <td>{{ find.user.email }}</td>
+              <td>{{ find.score }}</td>
+            </tr>
+          {% endfor %}
+          </table>
+        </div>
+
+        <div class="tab-pane fade" id="month" role="tabpanel" aria-labelledby="month-tab">
+          <table class="table">
+            <tr>
+              <th scope="col">Place</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Score</th>
+            </tr>
+
+          {% for find in month_finds %}
+            <tr>
+              <!-- my-auto ml-2 or ml-auto mr-2 -->
+              <td scope="row">{{ forloop.counter }}</td>
+              <td>{{ find.user.first_name }} {{ find.user.last_name }}</td>
+              <td>{{ find.user.email }}</td>
+              <td>{{ find.score }}</td>
+            </tr>
+          {% endfor %}
+          </table>
+        </div>
+
+        <div class="tab-pane fade" id="all-time" role="tabpanel" aria-labelledby="all-time-tab">
+          <table class="table">
+            <tr>
+              <th scope="col">Place</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Score</th>
+            </tr>
+
+          {% for find in all_finds %}
+            <tr>
+              <!-- my-auto ml-2 or ml-auto mr-2 -->
+              <td scope="row">{{ forloop.counter }}</td>
+              <td>{{ find.user.first_name }} {{ find.user.last_name }}</td>
+              <td>{{ find.user.email }}</td>
+              <td>{{ find.score }}</td>
+            </tr>
+          {% endfor %}
+          </table>
+        </div>
+      </div>
     </div>
-  {% endif %}
+    {% endif %}
   </div>
 </section>
 {% endblock %}

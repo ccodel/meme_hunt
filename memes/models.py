@@ -53,6 +53,24 @@ class Meme(models.Model):
     def latest():
         return Meme.objects.latest('start_date')
 
+    # Finds the k-th most recent meme
+    #   Note that the parameter is 1-indexed
+    #   If k memes don't exist, takes the last one
+    @staticmethod
+    def latest_k(k):
+        memes = Meme.objects.all().order_by('-start_date')
+        return memes[min(memes.count() - 1, k - 1)]
+
+    # Returns an array of the k-th most recent memes. If k is too large
+    #   for the number of memes, as many as possible are returned. The
+    #   order is "backwards," in the sense that arr[0] is the latest meme.
+    @staticmethod
+    def latest_set(k):
+        memes = Meme.objects.all().order_by('-start_date')
+        return memes[:min(memes.count(), k)]
+
+    # Returns the list of hints as an array
+    # TODO hard-coded as seven hints
     def hints(self):
         return [ self.hint1,
                 self.hint2,
