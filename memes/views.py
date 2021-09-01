@@ -91,8 +91,13 @@ class MemeCreationView(TemplateView):
     template_name = 'memes/meme_creation.html'
 
     def get(self, request):
-        self.form = MemeForm()
-        return render(request, self.template_name, {'form': self.form})
+        if request.user.is_staff:
+            self.form = MemeForm()
+            return render(request, self.template_name, {'form': self.form})
+        else:
+            messages.add_message(request, messages.WARNING,
+                    'You must be staff in order to create a meme.')
+            return HttpResponseRedirect(reverse('home'))
 
     def post(self, request):
         # Create new instance of form
